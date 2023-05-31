@@ -1,0 +1,22 @@
+﻿@model StudentModel
+
+<h1>Delete Student</h1>
+
+<div>
+    <h3>Are you sure you want to delete this student?</h3>
+    <div>
+        <h4>Student ID: @Model.StudentId</h4>
+        <h4>Name: @Model.FirstName @Model.Surname</h4>
+        <h4>Gender: @Model.Gender</h4>
+        <h4>Date of Birth: @Model.DOB.ToShortDateString()</h4>
+        <h4>Address 1: @Model.Address1</h4>
+        <h4>Address 2: @Model.Address2</h4>
+        <h4>Address 3: @Model.Address3</h4>
+    </div>
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="StudentId" value="@Model.StudentId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index">Cancel</a>
+    </form>
+   
+</div>

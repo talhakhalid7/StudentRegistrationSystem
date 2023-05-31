@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Registration Page";
+}
+
+@model IEnumerable<RegistrationModel>
+
+<h1>Registrations</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Registration ID</th>
+            <th>Student ID</th>
+            <th>Course ID</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var registration in Model)
+        {
+            <tr>
+                <td>@registration.RegistrationId</td>
+                <td>@registration.Student.FirstName @registration.Student.Surname</td>
+                <td>@registration.Course.CourseCode: @registration.Course.CourseName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@registration.RegistrationId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@registration.RegistrationId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@registration.RegistrationId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
